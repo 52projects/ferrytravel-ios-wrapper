@@ -16,6 +16,11 @@
 		9C22C78817943E3300B1D7CE /* libFerryTravelAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C22C77017943E3300B1D7CE /* libFerryTravelAPI.a */; };
 		9C22C78E17943E3300B1D7CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C22C78C17943E3300B1D7CE /* InfoPlist.strings */; };
 		9C22C79017943E3300B1D7CE /* FerryTravelAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C78F17943E3300B1D7CE /* FerryTravelAPITests.m */; };
+		9C22C7A41794446400B1D7CE /* FTOperatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C79B1794446400B1D7CE /* FTOperatorTests.m */; };
+		9C22C7A51794446400B1D7CE /* FTPortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C79D1794446400B1D7CE /* FTPortTests.m */; };
+		9C22C7A61794446400B1D7CE /* FTRouteScheduleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C79F1794446400B1D7CE /* FTRouteScheduleTests.m */; };
+		9C22C7A71794446400B1D7CE /* FTRouteTariffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7A11794446400B1D7CE /* FTRouteTariffTests.m */; };
+		9C22C7A81794446400B1D7CE /* FTRouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7A31794446400B1D7CE /* FTRouteTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,17 @@
 		9C22C78B17943E3300B1D7CE /* FerryTravelAPITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FerryTravelAPITests-Info.plist"; sourceTree = "<group>"; };
 		9C22C78D17943E3300B1D7CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C22C78F17943E3300B1D7CE /* FerryTravelAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FerryTravelAPITests.m; sourceTree = "<group>"; };
+		9C22C7991794445300B1D7CE /* Entity */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Entity; sourceTree = "<group>"; };
+		9C22C79A1794446400B1D7CE /* FTOperatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTOperatorTests.h; sourceTree = "<group>"; };
+		9C22C79B1794446400B1D7CE /* FTOperatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTOperatorTests.m; sourceTree = "<group>"; };
+		9C22C79C1794446400B1D7CE /* FTPortTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPortTests.h; sourceTree = "<group>"; };
+		9C22C79D1794446400B1D7CE /* FTPortTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPortTests.m; sourceTree = "<group>"; };
+		9C22C79E1794446400B1D7CE /* FTRouteScheduleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRouteScheduleTests.h; sourceTree = "<group>"; };
+		9C22C79F1794446400B1D7CE /* FTRouteScheduleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteScheduleTests.m; sourceTree = "<group>"; };
+		9C22C7A01794446400B1D7CE /* FTRouteTariffTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRouteTariffTests.h; sourceTree = "<group>"; };
+		9C22C7A11794446400B1D7CE /* FTRouteTariffTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteTariffTests.m; sourceTree = "<group>"; };
+		9C22C7A21794446400B1D7CE /* FTRouteTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRouteTests.h; sourceTree = "<group>"; };
+		9C22C7A31794446400B1D7CE /* FTRouteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +126,7 @@
 		9C22C77517943E3300B1D7CE /* FerryTravelAPI */ = {
 			isa = PBXGroup;
 			children = (
+				9C22C7991794445300B1D7CE /* Entity */,
 				9C22C77817943E3300B1D7CE /* FerryTravelAPI.h */,
 				9C22C77A17943E3300B1D7CE /* FerryTravelAPI.m */,
 				9C22C77617943E3300B1D7CE /* Supporting Files */,
@@ -128,6 +145,16 @@
 		9C22C78917943E3300B1D7CE /* FerryTravelAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				9C22C79A1794446400B1D7CE /* FTOperatorTests.h */,
+				9C22C79B1794446400B1D7CE /* FTOperatorTests.m */,
+				9C22C79C1794446400B1D7CE /* FTPortTests.h */,
+				9C22C79D1794446400B1D7CE /* FTPortTests.m */,
+				9C22C79E1794446400B1D7CE /* FTRouteScheduleTests.h */,
+				9C22C79F1794446400B1D7CE /* FTRouteScheduleTests.m */,
+				9C22C7A01794446400B1D7CE /* FTRouteTariffTests.h */,
+				9C22C7A11794446400B1D7CE /* FTRouteTariffTests.m */,
+				9C22C7A21794446400B1D7CE /* FTRouteTests.h */,
+				9C22C7A31794446400B1D7CE /* FTRouteTests.m */,
 				9C22C78F17943E3300B1D7CE /* FerryTravelAPITests.m */,
 				9C22C78A17943E3300B1D7CE /* Supporting Files */,
 			);
@@ -233,6 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C22C79017943E3300B1D7CE /* FerryTravelAPITests.m in Sources */,
+				9C22C7A71794446400B1D7CE /* FTRouteTariffTests.m in Sources */,
+				9C22C7A51794446400B1D7CE /* FTPortTests.m in Sources */,
+				9C22C7A81794446400B1D7CE /* FTRouteTests.m in Sources */,
+				9C22C7A61794446400B1D7CE /* FTRouteScheduleTests.m in Sources */,
+				9C22C7A41794446400B1D7CE /* FTOperatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
