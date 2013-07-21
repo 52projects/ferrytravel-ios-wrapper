@@ -1,6 +1,7 @@
 #import "FTRouteTariff.h"
-#import "WebRequest.h"
+#import "FTWebRequest.h"
 #import "FTUserDefaults.h"
+#import "FTUtility.h"
 
 @interface FTRouteTariff (PRIVATE)
 
@@ -28,9 +29,9 @@
 
 #pragma mark - Data Methods
 
-+ (NSArray *)getAll:(NSError **)error {
++ (NSArray *)getAllByRoute:(NSInteger)routeID error:(NSError **)error {
     FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSArray *results = [request makeWebRequest:@"routeTariffs" withContentType:WebRequestContentTypeJson withError:&*error]
+    NSArray *results = [request makeWebRequest:[NSString stringWithFormat:@"routes/%d/routeTariffs", routeID] withContentType:WebRequestContentTypeJson withError:&*error];
 
     if (*error) {
         return nil;
@@ -50,10 +51,10 @@
     return nil;
 }
 
-+ (void)getAllUsingCallback:(void (^)(NSArray *))resultsBlock error:(void (^)(NSError *))errorBlock {	
++ (void)getAllByRoute:(NSInteger)routeID usingCallback:(void (^)(NSArray *))resultsBlock error:(void (^)(NSError *))errorBlock {
     FTWebRequest *request = [[FTWebRequest alloc] init];
     
-    [request makeWebRequest:@"routeTariffs"
+    [request makeWebRequest:[NSString stringWithFormat:@"routes/%d/routeTariffs", routeID]
 			withContentType:WebRequestContentTypeJson
 			  usingCallback:^(id returnedResults) {
 				  NSMutableArray *routeTariffs = [[NSMutableArray alloc] initWithObjects:nil];
@@ -115,104 +116,6 @@
 	 ];
 }
 
-- (BOOL) create:(NSError *__autoreleasing *)error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeTariffDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request postWebRequest:@"routeTariffs"
-            withContentType:WebRequestContentTypeJson
-                   withData:jsonData
-                  withError:&*error];
-
-    if (*error) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void) createUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeTariffDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request postWebRequest:@"routeTariffs"
-            withContentType:WebRequestContentTypeJson
-                   withData:jsonData
-              usingCallback:^(id returnedResults) {
-                isSuccessful(YES);
-              }
-                errorBlock:^(NSError *localError) {
-                    if (error) {
-                        error(localError);
-                    }
-                }
-    ];
-}
-
-- (BOOL) update:(NSError *__autoreleasing *)error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeTariffDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request putWebRequest:@"[NSString stringWithFormat:@"routeTariffs/%d", routeTariffID]"
-           withContentType:WebRequestContentTypeJson
-                  withData:jsonData
-                 withError:&*error];
-
-    if (*error) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void) updateUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeTariffDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request putWebRequest:@"[NSString stringWithFormat:@"routeTariffs/%d", routeTariffID]"
-           withContentType:WebRequestContentTypeJson
-                  withData:jsonData
-             usingCallback:^(id returnedResults) {
-                isSuccessful(YES);
-             }
-               errorBlock:^(NSError *localError) {
-                 if (error) {
-                    error(localError);
-                 }
-                }
-    ];
-}
-
-- (BOOL) delete:(NSError *__autoreleasing *)error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-
-    [request deleteWebRequest:@"[NSString stringWithFormat:@"routeTariffs/%d", routeTariffID]"
-              withContentType:WebRequestContentTypeJson
-                    withError:&*error];
-    
-    if (*error) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void) deleteUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-
-    [request deleteWebRequest:@"[NSString stringWithFormat:@"routeTariffs/%d", routeTariffID]"
-              withContentType:WebRequestContentTypeJson
-                usingCallback:^(id returnedResults) {
-                    isSuccessful(YES);
-                }
-                   errorBlock:^(NSError *localError) {
-                        if (error) {
-                            error(localError);
-                        }
-                    }
-    ];
-}
 
 #pragma mark - Population Methods
 
@@ -222,26 +125,32 @@
 
 - (FTRouteTariff *)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
+
+    self.routeTariffID = [[dict objectForKey:@"id"] intValue];
+    self.routeID = [[dict objectForKey:@"routeID"] intValue];
+    self.facilityCode = [dict objectForKey:@"facilityCode"];
+    self.description = [dict objectForKey:@"description"];
     
-        self.routeTariffID = [dict integerForKey:@"routeTariffID"];
-        self.routeID = [dict integerForKey:@"routeID"];
-        self.tariffCategoryID = [dict integerForKey:@"tariffCategoryID"];
-        self.facilityCode = [dict objectForKey:@"facilityCode"];
-        self.description = [dict objectForKey:@"description"];
-        self.minLength = [dict floatForKey:@"minLength"];
-        self.maxLength = [dict floatForKey:@"maxLength"];
-        self.amount = [dict floatForKey:@"amount"];
-        self.perFootAmount = [dict floatForKey:@"perFootAmount"];
-        self.startDate = [dict objectForKey:@"startDate"];
-        self.endDate = [dict objectForKey:@"endDate"];
-        self.roundTripAmount = [dict floatForKey:@"roundTripAmount"];
-        self.vesselCode = [dict objectForKey:@"vesselCode"];
+    if ([dict objectForKey:@"arrivingPortID"] && ![[dict objectForKey:@"arrivingPortID"] isKindOfClass:[NSNull class]]) {
+        self.tariffCategoryID = [[dict objectForKey:@"tariffCategoryID"] intValue];
+    }
+
+    if ([dict objectForKey:@"arrivingPortID"] && ![[dict objectForKey:@"arrivingPortID"] isKindOfClass:[NSNull class]]) {
+        self.minLength = [NSNumber numberWithFloat:[[dict objectForKey:@"minLength"] floatValue]];
+    }
+    self.maxLength = [dict objectForKey:@"maxLength"];
+    self.amount = [dict objectForKey:@"amount"];
+    self.perFootAmount = [dict objectForKey:@"perFootAmount"];
+    self.startDate = [FTUtility convertToNSDate:[dict objectForKey:@"startDate"]];
+    self.endDate = [FTUtility convertToNSDate:[dict objectForKey:@"endDate"]];
+    self.roundTripAmount = [dict objectForKey:@"roundTripAmount"];
+    self.vesselCode = [dict objectForKey:@"vesselCode"];
     return self;
 }
 
 - (NSDictionary *) routeTariffDictionary {
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            self.routeTariffID, @"routeTariffID",
+            [NSNumber numberWithInt:self.routeTariffID], @"routeTariffID",
             self.routeID, @"routeID",
             self.tariffCategoryID, @"tariffCategoryID",
             self.facilityCode, @"facilityCode",
@@ -269,13 +178,13 @@
         self.tariffCategoryID = [coder decodeIntegerForKey:@"tariffCategoryID"];
         self.facilityCode = [coder decodeObjectForKey:@"facilityCode"];
         self.description = [coder decodeObjectForKey:@"description"];
-        self.minLength = [coder decodeFloatForKey:@"minLength"];
-        self.maxLength = [coder decodeFloatForKey:@"maxLength"];
-        self.amount = [coder decodeFloatForKey:@"amount"];
-        self.perFootAmount = [coder decodeFloatForKey:@"perFootAmount"];
+        self.minLength = [coder decodeObjectForKey:@"minLength"];
+        self.maxLength = [coder decodeObjectForKey:@"maxLength"];
+        self.amount = [coder decodeObjectForKey:@"amount"];
+        self.perFootAmount = [coder decodeObjectForKey:@"perFootAmount"];
         self.startDate = [coder decodeObjectForKey:@"startDate"];
         self.endDate = [coder decodeObjectForKey:@"endDate"];
-        self.roundTripAmount = [coder decodeFloatForKey:@"roundTripAmount"];
+        self.roundTripAmount = [coder decodeObjectForKey:@"roundTripAmount"];
         self.vesselCode = [coder decodeObjectForKey:@"vesselCode"];
     }
 
@@ -288,13 +197,13 @@ return self;
         [coder encodeInteger:tariffCategoryID forKey:@"tariffCategoryID"];
         [coder encodeObject:facilityCode forKey:@"facilityCode"];
         [coder encodeObject:description forKey:@"description"];
-        [coder encodeFloat:minLength forKey:@"minLength"];
-        [coder encodeFloat:maxLength forKey:@"maxLength"];
-        [coder encodeFloat:amount forKey:@"amount"];
-        [coder encodeFloat:perFootAmount forKey:@"perFootAmount"];
+        [coder encodeObject:minLength forKey:@"minLength"];
+        [coder encodeObject:maxLength forKey:@"maxLength"];
+        [coder encodeObject:amount forKey:@"amount"];
+        [coder encodeObject:perFootAmount forKey:@"perFootAmount"];
         [coder encodeObject:startDate forKey:@"startDate"];
         [coder encodeObject:endDate forKey:@"endDate"];
-        [coder encodeFloat:roundTripAmount forKey:@"roundTripAmount"];
+        [coder encodeObject:roundTripAmount forKey:@"roundTripAmount"];
         [coder encodeObject:vesselCode forKey:@"vesselCode"];
 }
 

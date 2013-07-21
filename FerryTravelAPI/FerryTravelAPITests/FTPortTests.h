@@ -1,6 +1,6 @@
-#import <SenTestingKit/SenTestingKit.h>
-#import "BridgeTech.ConsoleAPIClientTests.h"
+#import <XCTest/XCTest.h>
+#import "FerryTravelAPITests.h"
 
-@interface FTPortTests : BridgeTech.ConsoleAPIClientTests
+@interface FTPortTests : FerryTravelAPITests
 
 @end

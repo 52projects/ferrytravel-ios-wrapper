@@ -1,14 +1,19 @@
 #import "FTRouteTariffTests.h"
 #import "FTRouteTariff.h"
+#import "FTPort.h"
+#import "FTRoute.h"
 
 @implementation FTRouteTariffTests
 
 - (void) testGetAllRouteTariffs {
 	
 	NSError *error = nil;
-    NSArray *routeTariffs = [FTRouteTariff getAll:&error];
+    NSArray *ports = [FTPort getAll:&error];
+    NSArray *routes = [FTRoute getAllByDepartingPort:[[ports objectAtIndex:0] portID] error:&error];
+    
+    NSArray *routeTariffs = [FTRouteTariff getAllByRoute:[[routes objectAtIndex:0] routeID] error:&error];
 	
-	STAssertNotNil(routeTariffs, @"routeTariffs are nil, you fail.");
+	XCTAssertNotNil(routeTariffs, @"routeTariffs are nil, you fail.");
 	
 }
 
@@ -16,16 +21,19 @@
 	
 	__block BOOL done= NO;
     int count = 0;
+    
+    NSError *error = nil;
+    NSArray *ports = [FTPort getAll:&error];
+    NSArray *routes = [FTRoute getAllByDepartingPort:[[ports objectAtIndex:0] portID] error:&error];
 	
-	[FTRouteTariff getAllUsingCallback:^(id routeTariffs) {
-		
-		STAssertNotNil(routeTariffs, @"routeTariffs were not returned, something went wrong.");
+	[FTRouteTariff getAllByRoute:[[routes objectAtIndex:0] routeID] usingCallback:^(id routeTariffs) {
+		XCTAssertNotNil(routeTariffs, @"routeTariffs were not returned, something went wrong.");
 		done = YES;
 		
 		
 	}
 								 error:^(NSError *error) {
-									 STFail([NSString stringWithFormat:@"An error occured. %@", error]);
+									 XCTFail(@"An error occured. \"%@\"", error);
 									 done = YES;							
 								 }
 	 ];
@@ -39,7 +47,7 @@
         }
         else {
             done = YES;
-            STFail(@"Did not complete testGetAllUsingCallback");
+            XCTFail(@"Did not complete testGetAllUsingCallback");
         }
     }
 }
@@ -47,11 +55,14 @@
 - (void) testGetRouteTariffByID {
 	
 	NSError *error = nil;
-	NSArray *routeTariffs = [FTRouteTariff getAll:&error];
+    NSArray *ports = [FTPort getAll:&error];
+    NSArray *routes = [FTRoute getAllByDepartingPort:[[ports objectAtIndex:0] portID] error:&error];
+    
+	NSArray *routeTariffs = [FTRouteTariff getAllByRoute:[[routes objectAtIndex:0] routeID] error:&error];
 	NSInteger routeTariffID = [(FTRouteTariff *)[routeTariffs objectAtIndex:0] routeTariffID];
 	
 	FTRouteTariff *routeTariff = [FTRouteTariff getByID:routeTariffID error:&error];
-	STAssertNotNil(application, @"routeTariff is nil, you fail.");
+	XCTAssertNotNil(routeTariff, @"routeTariff is nil, you fail.");
 		
 }
 
@@ -60,17 +71,21 @@
 	NSError *error = nil;
 	__block BOOL done= NO;
     int count = 0;
-	NSArray *routeTariffs = [FTRouteTariff getAll:&error];
+	
+    NSArray *ports = [FTPort getAll:&error];
+    NSArray *routes = [FTRoute getAllByDepartingPort:[[ports objectAtIndex:0] portID] error:&error];
+    
+	NSArray *routeTariffs = [FTRouteTariff getAllByRoute:[[routes objectAtIndex:0] routeID] error:&error];
 	NSInteger routeTariffID = [(FTRouteTariff *)[routeTariffs objectAtIndex:0] routeTariffID];
 	
 	[FTRouteTariff getByID:routeTariffID 
 			   usingCallback:^(FTRouteTariff *routeTariff) {
-				   STAssertNotNil(routeTariff, @"routeTariff was not returned, something went wrong.");
+				   XCTAssertNotNil(routeTariff, @"routeTariff was not returned, something went wrong.");
 				   done = YES;
 		
 			   }
 				  errorBlock:^(NSError *error) {
-									 STFail([NSString stringWithFormat:@"An error occured. %@", error]);
+									 XCTFail(@"An error occured. \"%@\"", error);
 									 done = YES;							
 				  }
 	 ];
@@ -84,182 +99,9 @@
         }
         else {
             done = YES;
-            STFail(@"Did not complete testGetAllUsingCallback");
+            XCTFail(@"Did not complete testGetAllUsingCallback");
         }
     }
-}
-
-- (void) testCreateRouteTariff {
-	
-	NSError *error = nil;
-	FTRouteTariff *routeTariff = [[FTRouteTariff alloc] init];
-    
-        [routeTariff setRouteTariffID:@"SET VALUE"];
-        [routeTariff setRouteID:@"SET VALUE"];
-        [routeTariff setTariffCategoryID:@"SET VALUE"];
-        [routeTariff setFacilityCode:@"SET VALUE"];
-        [routeTariff setDescription:@"SET VALUE"];
-        [routeTariff setMinLength:@"SET VALUE"];
-        [routeTariff setMaxLength:@"SET VALUE"];
-        [routeTariff setAmount:@"SET VALUE"];
-        [routeTariff setPerFootAmount:@"SET VALUE"];
-        [routeTariff setStartDate:@"SET VALUE"];
-        [routeTariff setEndDate:@"SET VALUE"];
-        [routeTariff setRoundTripAmount:@"SET VALUE"];
-        [routeTariff setVesselCode:@"SET VALUE"];
-    
-	[routeTariff create:&error];
-	
-	BOOL isSuccessful = YES;
-	
-	if (error) {
-		isSuccessful = NO;
-	}
-
-	STAssertTrue(isSuccessful, @"routeTariff was not saved.");
-}
-
-- (void) testCreateRouteTariffUsingCallback {
-	
-	__block NSError *localError = nil;
-	__block BOOL done= NO;
-    int count = 0;
-	
-	FTRouteTariff *routeTariff = [[FTRouteTariff alloc] init];
-    
-        [routeTariff setRouteTariffID:@"SET VALUE"];
-        [routeTariff setRouteID:@"SET VALUE"];
-        [routeTariff setTariffCategoryID:@"SET VALUE"];
-        [routeTariff setFacilityCode:@"SET VALUE"];
-        [routeTariff setDescription:@"SET VALUE"];
-        [routeTariff setMinLength:@"SET VALUE"];
-        [routeTariff setMaxLength:@"SET VALUE"];
-        [routeTariff setAmount:@"SET VALUE"];
-        [routeTariff setPerFootAmount:@"SET VALUE"];
-        [routeTariff setStartDate:@"SET VALUE"];
-        [routeTariff setEndDate:@"SET VALUE"];
-        [routeTariff setRoundTripAmount:@"SET VALUE"];
-        [routeTariff setVesselCode:@"SET VALUE"];
-	
-	[routeTariff createUsingCallback:^(BOOL isSuccessful) {
-					STAssertTrue(isSuccessful, @"creating routeTariff did not save.");
-					done = YES;
-				}
-						  errorBlock:^(NSError *error) {
-							  STFail([NSString stringWithFormat:@"An error occured. %@", error]);
-							  done = YES;
-						  }
-	 ];
-
-	while (!done) {
-        
-        if (count < 20) {
-            count++;
-            [self runLoop];
-        }
-        else {
-            done = YES;
-            STFail(@"Did not complete testGetAllUsingCallback");
-        }
-    }
-	
-}
-
-
-- (void) testDeleteRouteTariff {
-	
-	NSError *error = nil;
-	FTRouteTariff *routeTariff = [[FTRouteTariff alloc] init];
-    
-        [routeTariff setRouteTariffID:@"SET VALUE"];
-        [routeTariff setRouteID:@"SET VALUE"];
-        [routeTariff setTariffCategoryID:@"SET VALUE"];
-        [routeTariff setFacilityCode:@"SET VALUE"];
-        [routeTariff setDescription:@"SET VALUE"];
-        [routeTariff setMinLength:@"SET VALUE"];
-        [routeTariff setMaxLength:@"SET VALUE"];
-        [routeTariff setAmount:@"SET VALUE"];
-        [routeTariff setPerFootAmount:@"SET VALUE"];
-        [routeTariff setStartDate:@"SET VALUE"];
-        [routeTariff setEndDate:@"SET VALUE"];
-        [routeTariff setRoundTripAmount:@"SET VALUE"];
-        [routeTariff setVesselCode:@"SET VALUE"];
-    
-	[routeTariff create:&error];
-	
-	BOOL isSuccessful = YES;
-	
-	if (error) {
-		isSuccessful = NO;
-	}
-	
-	if (isSuccessful) {
-		NSArray *allRouteTariffs = [FTRouteTariff getAll:&error];
-		
-		for (FTRouteTariff *app in allApplications) {
-			if ([app.routeTariffID isEqualToString:routeTariff.routeTariffID]) {
-				[app delete:&localError];
-			}
-		}
-	}
-	
-	STAssertTrue(isSuccessful, @"application was not saved.");
-}
-
-- (void) testDeleteRouteTariffUsingCallback {
-	
-	__block NSError *localError = nil;
-	__block BOOL done= NO;
-    int count = 0;
-	
-	FTRouteTariff *routeTariff = [[FTRouteTariff alloc] init];
-    
-        [routeTariff setRouteTariffID:@"SET VALUE"];
-        [routeTariff setRouteID:@"SET VALUE"];
-        [routeTariff setTariffCategoryID:@"SET VALUE"];
-        [routeTariff setFacilityCode:@"SET VALUE"];
-        [routeTariff setDescription:@"SET VALUE"];
-        [routeTariff setMinLength:@"SET VALUE"];
-        [routeTariff setMaxLength:@"SET VALUE"];
-        [routeTariff setAmount:@"SET VALUE"];
-        [routeTariff setPerFootAmount:@"SET VALUE"];
-        [routeTariff setStartDate:@"SET VALUE"];
-        [routeTariff setEndDate:@"SET VALUE"];
-        [routeTariff setRoundTripAmount:@"SET VALUE"];
-        [routeTariff setVesselCode:@"SET VALUE"];
-	
-	[routeTariff createUsingCallback:^(BOOL isSuccessful) {
-					STAssertTrue(isSuccessful, @"creating application did not save.");
-					done = YES;
-		
-					if (isSuccessful) {
-						NSArray *allRouteTariffs = [FTRouteTariff getAll:&localError];
-						
-						for (FTRouteTariff *app in allRouteTariffs) {
-							if ([app.routeTariffID isEqualToString:routeTariff.routeTariffID]) {
-								[app delete:&localError];
-							}
-						}
-					}
-				}
-						  errorBlock:^(NSError *error) {
-							  STFail([NSString stringWithFormat:@"An error occured. %@", error]);
-							  done = YES;
-						  }
-	 ];
-
-	while (!done) {
-        
-        if (count < 20) {
-            count++;
-            [self runLoop];
-        }
-        else {
-            done = YES;
-            STFail(@"Did not complete testGetAllUsingCallback");
-        }
-    }
-	
 }
 
 @end

@@ -6,11 +6,7 @@
 //  Copyright (c) 2013 52projects, INC. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-
-@interface FerryTravelAPITests : XCTestCase
-
-@end
+#import "FerryTravelAPITests.h"
 
 @implementation FerryTravelAPITests
 
@@ -28,9 +24,21 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+- (void) runLoop {
+    
+    @try {
+        // This executes another run loop.
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        // Sleep 1/100th sec
+        usleep(10000);
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+	
 }
 
 @end

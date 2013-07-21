@@ -1,6 +1,7 @@
 #import "FTRouteSchedule.h"
-#import "WebRequest.h"
+#import "FTWebRequest.h"
 #import "FTUserDefaults.h"
+#import "FTUtility.h"
 
 @interface FTRouteSchedule (PRIVATE)
 
@@ -21,9 +22,9 @@
 
 #pragma mark - Data Methods
 
-+ (NSArray *)getAll:(NSError **)error {
++ (NSArray *)getAllByRoute:(NSInteger)routeID error:(NSError **)error {
     FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSArray *results = [request makeWebRequest:@"routeSchedules" withContentType:WebRequestContentTypeJson withError:&*error]
+    NSArray *results = [request makeWebRequest:[NSString stringWithFormat:@"routes/%d/routeschedules", routeID] withContentType:WebRequestContentTypeJson withError:&*error];
 
     if (*error) {
         return nil;
@@ -43,10 +44,10 @@
     return nil;
 }
 
-+ (void)getAllUsingCallback:(void (^)(NSArray *))resultsBlock error:(void (^)(NSError *))errorBlock {	
++ (void)getAllByRoute:(NSInteger)routeID usingCallback:(void (^)(NSArray *))resultsBlock error:(void (^)(NSError *))errorBlock {
     FTWebRequest *request = [[FTWebRequest alloc] init];
     
-    [request makeWebRequest:@"routeSchedules"
+    [request makeWebRequest:[NSString stringWithFormat:@"routes/%d/routeschedules", routeID]
 			withContentType:WebRequestContentTypeJson
 			  usingCallback:^(id returnedResults) {
 				  NSMutableArray *routeSchedules = [[NSMutableArray alloc] initWithObjects:nil];
@@ -108,105 +109,6 @@
 	 ];
 }
 
-- (BOOL) create:(NSError *__autoreleasing *)error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeScheduleDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request postWebRequest:@"routeSchedules"
-            withContentType:WebRequestContentTypeJson
-                   withData:jsonData
-                  withError:&*error];
-
-    if (*error) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void) createUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeScheduleDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request postWebRequest:@"routeSchedules"
-            withContentType:WebRequestContentTypeJson
-                   withData:jsonData
-              usingCallback:^(id returnedResults) {
-                isSuccessful(YES);
-              }
-                errorBlock:^(NSError *localError) {
-                    if (error) {
-                        error(localError);
-                    }
-                }
-    ];
-}
-
-- (BOOL) update:(NSError *__autoreleasing *)error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeScheduleDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request putWebRequest:@"[NSString stringWithFormat:@"routeSchedules/%d", routeScheduleID]"
-           withContentType:WebRequestContentTypeJson
-                  withData:jsonData
-                 withError:&*error];
-
-    if (*error) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void) updateUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self routeScheduleDictionary] options:NSJSONWritingPrettyPrinted error:&error];
-
-    [request putWebRequest:@"[NSString stringWithFormat:@"routeSchedules/%d", routeScheduleID]"
-           withContentType:WebRequestContentTypeJson
-                  withData:jsonData
-             usingCallback:^(id returnedResults) {
-                isSuccessful(YES);
-             }
-               errorBlock:^(NSError *localError) {
-                 if (error) {
-                    error(localError);
-                 }
-                }
-    ];
-}
-
-- (BOOL) delete:(NSError *__autoreleasing *)error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-
-    [request deleteWebRequest:@"[NSString stringWithFormat:@"routeSchedules/%d", routeScheduleID]"
-              withContentType:WebRequestContentTypeJson
-                    withError:&*error];
-    
-    if (*error) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void) deleteUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error {
-    FTWebRequest *request = [[FTWebRequest alloc] init];
-
-    [request deleteWebRequest:@"[NSString stringWithFormat:@"routeSchedules/%d", routeScheduleID]"
-              withContentType:WebRequestContentTypeJson
-                usingCallback:^(id returnedResults) {
-                    isSuccessful(YES);
-                }
-                   errorBlock:^(NSError *localError) {
-                        if (error) {
-                            error(localError);
-                        }
-                    }
-    ];
-}
-
 #pragma mark - Population Methods
 
 + (FTRouteSchedule *)populateWithDictionary:(NSDictionary *)dict {
@@ -216,18 +118,18 @@
 - (FTRouteSchedule *)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     
-        self.routeScheduleID = [dict integerForKey:@"routeScheduleID"];
-        self.routeID = [dict integerForKey:@"routeID"];
+        self.routeScheduleID = [[dict objectForKey:@"id"] intValue];
+        self.routeID = [[dict objectForKey:@"routeID"] intValue];
         self.vesselCode = [dict objectForKey:@"vesselCode"];
         self.vesselName = [dict objectForKey:@"vesselName"];
-        self.departDateTime = [dict objectForKey:@"departDateTime"];
-        self.arriveDateTime = [dict objectForKey:@"arriveDateTime"];
+        self.departDateTime = [FTUtility convertToFullNSDate:[dict objectForKey:@"departDateTime"]];
+        self.arriveDateTime = [FTUtility convertToFullNSDate:[dict objectForKey:@"arriveDateTime"]];
     return self;
 }
 
 - (NSDictionary *) routeScheduleDictionary {
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            self.routeScheduleID, @"routeScheduleID",
+            [NSNumber numberWithInt:self.routeScheduleID], @"routeScheduleID",
             self.routeID, @"routeID",
             self.vesselCode, @"vesselCode",
             self.vesselName, @"vesselName",

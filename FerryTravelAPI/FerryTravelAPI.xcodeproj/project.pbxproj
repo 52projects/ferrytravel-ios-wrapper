@@ -15,12 +15,30 @@
 		9C22C78517943E3300B1D7CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C22C78417943E3300B1D7CE /* UIKit.framework */; };
 		9C22C78817943E3300B1D7CE /* libFerryTravelAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C22C77017943E3300B1D7CE /* libFerryTravelAPI.a */; };
 		9C22C78E17943E3300B1D7CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C22C78C17943E3300B1D7CE /* InfoPlist.strings */; };
-		9C22C79017943E3300B1D7CE /* FerryTravelAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C78F17943E3300B1D7CE /* FerryTravelAPITests.m */; };
 		9C22C7A41794446400B1D7CE /* FTOperatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C79B1794446400B1D7CE /* FTOperatorTests.m */; };
 		9C22C7A51794446400B1D7CE /* FTPortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C79D1794446400B1D7CE /* FTPortTests.m */; };
 		9C22C7A61794446400B1D7CE /* FTRouteScheduleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C79F1794446400B1D7CE /* FTRouteScheduleTests.m */; };
 		9C22C7A71794446400B1D7CE /* FTRouteTariffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7A11794446400B1D7CE /* FTRouteTariffTests.m */; };
 		9C22C7A81794446400B1D7CE /* FTRouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7A31794446400B1D7CE /* FTRouteTests.m */; };
+		9C22C7AB1794456200B1D7CE /* FerryTravelAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7AA1794456200B1D7CE /* FerryTravelAPITests.m */; };
+		9C22C7B71794460C00B1D7CE /* FTOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7AE1794460C00B1D7CE /* FTOperator.m */; };
+		9C22C7B81794460C00B1D7CE /* FTPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7B01794460C00B1D7CE /* FTPort.m */; };
+		9C22C7B91794460C00B1D7CE /* FTRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7B21794460C00B1D7CE /* FTRoute.m */; };
+		9C22C7BA1794460C00B1D7CE /* FTRouteSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7B41794460C00B1D7CE /* FTRouteSchedule.m */; };
+		9C22C7BB1794460C00B1D7CE /* FTRouteTariff.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7B61794460C00B1D7CE /* FTRouteTariff.m */; };
+		9C22C7DB179446B500B1D7CE /* NSObject+serializeToJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7BE179446B500B1D7CE /* NSObject+serializeToJSON.m */; };
+		9C22C7DC179446B500B1D7CE /* NSString+decode64.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7C0179446B500B1D7CE /* NSString+decode64.m */; };
+		9C22C7DE179446B500B1D7CE /* FTDateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7C6179446B500B1D7CE /* FTDateUtility.m */; };
+		9C22C7DF179446B500B1D7CE /* FTUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7C8179446B500B1D7CE /* FTUtility.m */; };
+		9C22C7E0179446B500B1D7CE /* FTWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7CA179446B500B1D7CE /* FTWebRequest.m */; };
+		9C22C7E1179446B500B1D7CE /* FTXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7CC179446B500B1D7CE /* FTXMLParser.m */; };
+		9C22C7E2179446B500B1D7CE /* FTJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7CF179446B500B1D7CE /* FTJSON.m */; };
+		9C22C7E3179446B500B1D7CE /* FTJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7D1179446B500B1D7CE /* FTJsonBase.m */; };
+		9C22C7E4179446B500B1D7CE /* FTJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7D3179446B500B1D7CE /* FTJsonParser.m */; };
+		9C22C7E5179446B500B1D7CE /* FTJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7D5179446B500B1D7CE /* FTJsonWriter.m */; };
+		9C22C7E6179446B500B1D7CE /* NSObject+FTJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7D8179446B500B1D7CE /* NSObject+FTJSON.m */; };
+		9C22C7E7179446B500B1D7CE /* NSString+FTJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7DA179446B500B1D7CE /* NSString+FTJSON.m */; };
+		9C22C7EA179448EC00B1D7CE /* FTUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C7E9179448EC00B1D7CE /* FTUserDefaults.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +75,6 @@
 		9C22C78417943E3300B1D7CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9C22C78B17943E3300B1D7CE /* FerryTravelAPITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FerryTravelAPITests-Info.plist"; sourceTree = "<group>"; };
 		9C22C78D17943E3300B1D7CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9C22C78F17943E3300B1D7CE /* FerryTravelAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FerryTravelAPITests.m; sourceTree = "<group>"; };
-		9C22C7991794445300B1D7CE /* Entity */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Entity; sourceTree = "<group>"; };
 		9C22C79A1794446400B1D7CE /* FTOperatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTOperatorTests.h; sourceTree = "<group>"; };
 		9C22C79B1794446400B1D7CE /* FTOperatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTOperatorTests.m; sourceTree = "<group>"; };
 		9C22C79C1794446400B1D7CE /* FTPortTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPortTests.h; sourceTree = "<group>"; };
@@ -69,6 +85,45 @@
 		9C22C7A11794446400B1D7CE /* FTRouteTariffTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteTariffTests.m; sourceTree = "<group>"; };
 		9C22C7A21794446400B1D7CE /* FTRouteTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRouteTests.h; sourceTree = "<group>"; };
 		9C22C7A31794446400B1D7CE /* FTRouteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteTests.m; sourceTree = "<group>"; };
+		9C22C7A91794456200B1D7CE /* FerryTravelAPITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FerryTravelAPITests.h; sourceTree = "<group>"; };
+		9C22C7AA1794456200B1D7CE /* FerryTravelAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FerryTravelAPITests.m; sourceTree = "<group>"; };
+		9C22C7AD1794460C00B1D7CE /* FTOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTOperator.h; sourceTree = "<group>"; };
+		9C22C7AE1794460C00B1D7CE /* FTOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTOperator.m; sourceTree = "<group>"; };
+		9C22C7AF1794460C00B1D7CE /* FTPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPort.h; sourceTree = "<group>"; };
+		9C22C7B01794460C00B1D7CE /* FTPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPort.m; sourceTree = "<group>"; };
+		9C22C7B11794460C00B1D7CE /* FTRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRoute.h; sourceTree = "<group>"; };
+		9C22C7B21794460C00B1D7CE /* FTRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRoute.m; sourceTree = "<group>"; };
+		9C22C7B31794460C00B1D7CE /* FTRouteSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRouteSchedule.h; sourceTree = "<group>"; };
+		9C22C7B41794460C00B1D7CE /* FTRouteSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteSchedule.m; sourceTree = "<group>"; };
+		9C22C7B51794460C00B1D7CE /* FTRouteTariff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTRouteTariff.h; sourceTree = "<group>"; };
+		9C22C7B61794460C00B1D7CE /* FTRouteTariff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTRouteTariff.m; sourceTree = "<group>"; };
+		9C22C7BD179446B500B1D7CE /* NSObject+serializeToJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+serializeToJSON.h"; sourceTree = "<group>"; };
+		9C22C7BE179446B500B1D7CE /* NSObject+serializeToJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+serializeToJSON.m"; sourceTree = "<group>"; };
+		9C22C7BF179446B500B1D7CE /* NSString+decode64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+decode64.h"; sourceTree = "<group>"; };
+		9C22C7C0179446B500B1D7CE /* NSString+decode64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+decode64.m"; sourceTree = "<group>"; };
+		9C22C7C5179446B500B1D7CE /* FTDateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDateUtility.h; sourceTree = "<group>"; };
+		9C22C7C6179446B500B1D7CE /* FTDateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDateUtility.m; sourceTree = "<group>"; };
+		9C22C7C7179446B500B1D7CE /* FTUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUtility.h; sourceTree = "<group>"; };
+		9C22C7C8179446B500B1D7CE /* FTUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTUtility.m; sourceTree = "<group>"; };
+		9C22C7C9179446B500B1D7CE /* FTWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWebRequest.h; sourceTree = "<group>"; };
+		9C22C7CA179446B500B1D7CE /* FTWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWebRequest.m; sourceTree = "<group>"; };
+		9C22C7CB179446B500B1D7CE /* FTXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTXMLParser.h; sourceTree = "<group>"; };
+		9C22C7CC179446B500B1D7CE /* FTXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTXMLParser.m; sourceTree = "<group>"; };
+		9C22C7CE179446B500B1D7CE /* FTJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJSON.h; sourceTree = "<group>"; };
+		9C22C7CF179446B500B1D7CE /* FTJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJSON.m; sourceTree = "<group>"; };
+		9C22C7D0179446B500B1D7CE /* FTJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJsonBase.h; sourceTree = "<group>"; };
+		9C22C7D1179446B500B1D7CE /* FTJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJsonBase.m; sourceTree = "<group>"; };
+		9C22C7D2179446B500B1D7CE /* FTJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJsonParser.h; sourceTree = "<group>"; };
+		9C22C7D3179446B500B1D7CE /* FTJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJsonParser.m; sourceTree = "<group>"; };
+		9C22C7D4179446B500B1D7CE /* FTJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJsonWriter.h; sourceTree = "<group>"; };
+		9C22C7D5179446B500B1D7CE /* FTJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJsonWriter.m; sourceTree = "<group>"; };
+		9C22C7D6179446B500B1D7CE /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		9C22C7D7179446B500B1D7CE /* NSObject+FTJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FTJSON.h"; sourceTree = "<group>"; };
+		9C22C7D8179446B500B1D7CE /* NSObject+FTJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FTJSON.m"; sourceTree = "<group>"; };
+		9C22C7D9179446B500B1D7CE /* NSString+FTJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FTJSON.h"; sourceTree = "<group>"; };
+		9C22C7DA179446B500B1D7CE /* NSString+FTJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FTJSON.m"; sourceTree = "<group>"; };
+		9C22C7E8179448EC00B1D7CE /* FTUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUserDefaults.h; sourceTree = "<group>"; };
+		9C22C7E9179448EC00B1D7CE /* FTUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTUserDefaults.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +181,9 @@
 		9C22C77517943E3300B1D7CE /* FerryTravelAPI */ = {
 			isa = PBXGroup;
 			children = (
-				9C22C7991794445300B1D7CE /* Entity */,
+				9C22C7BC179446B500B1D7CE /* Categories */,
+				9C22C7C4179446B500B1D7CE /* Shared */,
+				9C22C7AC1794460C00B1D7CE /* Entity */,
 				9C22C77817943E3300B1D7CE /* FerryTravelAPI.h */,
 				9C22C77A17943E3300B1D7CE /* FerryTravelAPI.m */,
 				9C22C77617943E3300B1D7CE /* Supporting Files */,
@@ -155,8 +212,9 @@
 				9C22C7A11794446400B1D7CE /* FTRouteTariffTests.m */,
 				9C22C7A21794446400B1D7CE /* FTRouteTests.h */,
 				9C22C7A31794446400B1D7CE /* FTRouteTests.m */,
-				9C22C78F17943E3300B1D7CE /* FerryTravelAPITests.m */,
 				9C22C78A17943E3300B1D7CE /* Supporting Files */,
+				9C22C7A91794456200B1D7CE /* FerryTravelAPITests.h */,
+				9C22C7AA1794456200B1D7CE /* FerryTravelAPITests.m */,
 			);
 			path = FerryTravelAPITests;
 			sourceTree = "<group>";
@@ -168,6 +226,72 @@
 				9C22C78C17943E3300B1D7CE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C22C7AC1794460C00B1D7CE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9C22C7AD1794460C00B1D7CE /* FTOperator.h */,
+				9C22C7AE1794460C00B1D7CE /* FTOperator.m */,
+				9C22C7AF1794460C00B1D7CE /* FTPort.h */,
+				9C22C7B01794460C00B1D7CE /* FTPort.m */,
+				9C22C7B11794460C00B1D7CE /* FTRoute.h */,
+				9C22C7B21794460C00B1D7CE /* FTRoute.m */,
+				9C22C7B31794460C00B1D7CE /* FTRouteSchedule.h */,
+				9C22C7B41794460C00B1D7CE /* FTRouteSchedule.m */,
+				9C22C7B51794460C00B1D7CE /* FTRouteTariff.h */,
+				9C22C7B61794460C00B1D7CE /* FTRouteTariff.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		9C22C7BC179446B500B1D7CE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9C22C7BD179446B500B1D7CE /* NSObject+serializeToJSON.h */,
+				9C22C7BE179446B500B1D7CE /* NSObject+serializeToJSON.m */,
+				9C22C7BF179446B500B1D7CE /* NSString+decode64.h */,
+				9C22C7C0179446B500B1D7CE /* NSString+decode64.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		9C22C7C4179446B500B1D7CE /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9C22C7C5179446B500B1D7CE /* FTDateUtility.h */,
+				9C22C7C6179446B500B1D7CE /* FTDateUtility.m */,
+				9C22C7C7179446B500B1D7CE /* FTUtility.h */,
+				9C22C7C8179446B500B1D7CE /* FTUtility.m */,
+				9C22C7C9179446B500B1D7CE /* FTWebRequest.h */,
+				9C22C7CA179446B500B1D7CE /* FTWebRequest.m */,
+				9C22C7CB179446B500B1D7CE /* FTXMLParser.h */,
+				9C22C7CC179446B500B1D7CE /* FTXMLParser.m */,
+				9C22C7CD179446B500B1D7CE /* SBJSON */,
+				9C22C7E8179448EC00B1D7CE /* FTUserDefaults.h */,
+				9C22C7E9179448EC00B1D7CE /* FTUserDefaults.m */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		9C22C7CD179446B500B1D7CE /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				9C22C7CE179446B500B1D7CE /* FTJSON.h */,
+				9C22C7CF179446B500B1D7CE /* FTJSON.m */,
+				9C22C7D0179446B500B1D7CE /* FTJsonBase.h */,
+				9C22C7D1179446B500B1D7CE /* FTJsonBase.m */,
+				9C22C7D2179446B500B1D7CE /* FTJsonParser.h */,
+				9C22C7D3179446B500B1D7CE /* FTJsonParser.m */,
+				9C22C7D4179446B500B1D7CE /* FTJsonWriter.h */,
+				9C22C7D5179446B500B1D7CE /* FTJsonWriter.m */,
+				9C22C7D6179446B500B1D7CE /* JSON.h */,
+				9C22C7D7179446B500B1D7CE /* NSObject+FTJSON.h */,
+				9C22C7D8179446B500B1D7CE /* NSObject+FTJSON.m */,
+				9C22C7D9179446B500B1D7CE /* NSString+FTJSON.h */,
+				9C22C7DA179446B500B1D7CE /* NSString+FTJSON.m */,
+			);
+			path = SBJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +375,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C22C7B81794460C00B1D7CE /* FTPort.m in Sources */,
+				9C22C7B91794460C00B1D7CE /* FTRoute.m in Sources */,
+				9C22C7EA179448EC00B1D7CE /* FTUserDefaults.m in Sources */,
+				9C22C7DB179446B500B1D7CE /* NSObject+serializeToJSON.m in Sources */,
 				9C22C77B17943E3300B1D7CE /* FerryTravelAPI.m in Sources */,
+				9C22C7B71794460C00B1D7CE /* FTOperator.m in Sources */,
+				9C22C7DF179446B500B1D7CE /* FTUtility.m in Sources */,
+				9C22C7E4179446B500B1D7CE /* FTJsonParser.m in Sources */,
+				9C22C7E6179446B500B1D7CE /* NSObject+FTJSON.m in Sources */,
+				9C22C7E0179446B500B1D7CE /* FTWebRequest.m in Sources */,
+				9C22C7E1179446B500B1D7CE /* FTXMLParser.m in Sources */,
+				9C22C7E2179446B500B1D7CE /* FTJSON.m in Sources */,
+				9C22C7BA1794460C00B1D7CE /* FTRouteSchedule.m in Sources */,
+				9C22C7E3179446B500B1D7CE /* FTJsonBase.m in Sources */,
+				9C22C7BB1794460C00B1D7CE /* FTRouteTariff.m in Sources */,
+				9C22C7DE179446B500B1D7CE /* FTDateUtility.m in Sources */,
+				9C22C7E7179446B500B1D7CE /* NSString+FTJSON.m in Sources */,
+				9C22C7DC179446B500B1D7CE /* NSString+decode64.m in Sources */,
+				9C22C7E5179446B500B1D7CE /* FTJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +401,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C22C79017943E3300B1D7CE /* FerryTravelAPITests.m in Sources */,
 				9C22C7A71794446400B1D7CE /* FTRouteTariffTests.m in Sources */,
+				9C22C7AB1794456200B1D7CE /* FerryTravelAPITests.m in Sources */,
 				9C22C7A51794446400B1D7CE /* FTPortTests.m in Sources */,
 				9C22C7A81794446400B1D7CE /* FTRouteTests.m in Sources */,
 				9C22C7A61794446400B1D7CE /* FTRouteScheduleTests.m in Sources */,
@@ -320,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -350,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -435,6 +577,7 @@
 				9C22C79517943E3300B1D7CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C22C79617943E3300B1D7CE /* Build configuration list for PBXNativeTarget "FerryTravelAPITests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +586,7 @@
 				9C22C79817943E3300B1D7CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

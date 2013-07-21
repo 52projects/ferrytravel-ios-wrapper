@@ -1,18 +1,18 @@
 @interface FTRouteTariff : NSObject <NSCoding>
 
-    @property (nonatomic) NSInteger routeTariffID
-    @property (nonatomic) NSInteger routeID
-    @property (nonatomic) NSInteger tariffCategoryID
-    @property (nonatomic, strong) NSString *facilityCode
-    @property (nonatomic, strong) NSString *description
-    @property (nonatomic, strong) NSNumber *minLength
-    @property (nonatomic, strong) NSNumber *maxLength
-    @property (nonatomic, strong) NSNumber *amount
-    @property (nonatomic, strong) NSNumber *perFootAmount
-    @property (nonatomic) id startDate
-    @property (nonatomic) id endDate
-    @property (nonatomic, strong) NSNumber *roundTripAmount
-    @property (nonatomic, strong) NSString *vesselCode
+@property (nonatomic) NSInteger routeTariffID;
+@property (nonatomic) NSInteger routeID;
+@property (nonatomic) NSInteger tariffCategoryID;
+@property (nonatomic, strong) NSString *facilityCode;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSNumber *minLength;
+@property (nonatomic, strong) NSNumber *maxLength;
+@property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, strong) NSNumber *perFootAmount;
+@property (nonatomic) id startDate;
+@property (nonatomic) id endDate;
+@property (nonatomic, strong) NSNumber *roundTripAmount;
+@property (nonatomic, strong) NSString *vesselCode;
 
 + (FTRouteTariff *) populateWithDictionary: (NSDictionary *)dict;
 
@@ -23,6 +23,8 @@
 Performs a synchronous call to the API routeTariff
 resource.
 @discussion
+ @param
+ routeID: The route id to get tariffs for
 @param
 error Out parameter (may be NULL) used if an error occurs
 while processing the request. Will not be modified if the
@@ -30,7 +32,7 @@ load succeeds.
 @result An array of routeTariff objects or nil if
 the load failed.
 */
-+ (NSArray *)getAll:(NSError **)error;
++ (NSArray *)getAllByRoute:(NSInteger)routeID error:(NSError **)error;
 
 
 /*!
@@ -38,6 +40,8 @@ the load failed.
 @abstract
 Performs an asynchronous call to the API routeTariff resource.
 @discussion
+ @param
+ routeID: The route id to get tariffs for
 @param
 resultsBlock The block that is performed after the
 request to the app harbor api has happened.
@@ -47,7 +51,7 @@ a block is available for that
 @result An array of routeTariff objects or nil if
 the load failed.
 */
-+ (void)getAllUsingCallback:(void (^)(NSArray *))resultsBlock error:(void (^)(NSError *))errorBlock;
++ (void)getAllByRoute:(NSInteger)routeID usingCallback:(void (^)(NSArray *))resultsBlock error:(void (^)(NSError *))errorBlock;
 
 
 /*!
@@ -86,92 +90,5 @@ a block is available for that
 */
 + (void)getByID:(NSInteger)routeTariffID usingCallback:(void (^)(FTRouteTariff *))routeTariff errorBlock:(void (^)(NSError *))error;
 
-/*!
-@method create:
-@abstract
-Performs a synchronous call to the API
-to create a new routeTariff
-@param
-error Out parameter (may be NULL) used if an error occurs
-while processing the request. Will not be modified if the
-load succeeds.
-*/
-- (BOOL) create: (NSError **)error;
-
-/*!
-@method createUsingCallback:errorBlock
-@abstract
-Performs an asynchronous call to the API
-to create a new routeTariff
-@param
-isSuccessful Block that gives a boolean on whether or not
-the operation was successful
-@param
-error Out parameter (may be NULL) used if an error occurs
-while processing the request. Will not be modified if the
-load succeeds.
-*/
-- (void)createUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error;
-
-
-/*!
-@method update:
-@abstract
-Performs a synchronous call to the API
-to update the existing routeTariff
-@param
-error Out parameter (may be NULL) used if an error occurs
-while processing the request. Will not be modified if the
-load succeeds.
-*/
-- (BOOL) update: (NSError **)error;
-
-/*!
-@method updateUsingCallback:errorBlock
-@abstract
-Performs an asynchronous call to the API
-to update the existing routeTariff
-@param
-isSuccessful Block that gives a boolean on whether or not
-the operation was successful
-@param
-error Out parameter (may be NULL) used if an error occurs
-while processing the request. Will not be modified if the
-load succeeds.
-*/
-- (void)updateUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error;
-
-/*!
-@method delete:
-@abstract
-Performs a synchronous call to API
-to delete the existing routeTariff.
-@discussion
-It is highly recommended that when calling this method you
-give the user a warning on what is about to happen
-@param
-error Out parameter (may be NULL) used if an error occurs
-while processing the request. Will not be modified if the
-load succeeds.
-*/
-- (BOOL) delete: (NSError **)error;
-
-/*!
-@method deleteUsingCallback:errorBlock
-@abstract
-Performs an asynchronous call to the API
-to delete the existing routeTariff.
-@discussion
-It is highly recommended that when calling this method you
-give the user a warning on what is about to happen
-@param
-isSuccessful Block that gives a boolean on whether or not
-the operation was successful
-@param
-error Out parameter (may be NULL) used if an error occurs
-while processing the request. Will not be modified if the
-load succeeds.
-*/
-- (void)deleteUsingCallback:(void (^)(BOOL))isSuccessful errorBlock:(void (^)(NSError *))error;
 
 @end
